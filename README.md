@@ -75,7 +75,7 @@ dataset['SalePrice'] = dataset['SalePrice'].fillna(dataset['SalePrice'].mean())
 # Remove records with null values
 new_dataset = dataset.dropna()
 
-Feature Engineering
+# Feature Engineering
 
 We apply one-hot encoding to categorical features to convert them into a suitable format for machine learning models.
 
@@ -90,7 +90,7 @@ OH_cols.columns = OH_encoder.get_feature_names()
 df_final = new_dataset.drop(object_cols, axis=1)
 df_final = pd.concat([df_final, OH_cols], axis=1)
 
-Model Development and Evaluation
+# Model Development and Evaluation
 
 We train and evaluate regression models, including Support Vector Machine (SVM), Random Forest Regressor, and Linear Regression.
 
@@ -110,9 +110,11 @@ Linear Regressor
 And To calculate loss we will be using the mean_absolute_percentage_error module. It can easily be imported by using sklearn library. The formula for Mean Absolute Error : 
 
 
- 
+ ![image](https://github.com/surajmhulke/House-Price-Prediction/assets/136318267/b1576b61-4aba-4222-ab9c-24ddf1c355d3)
 
-SVM – Support vector Machine
+
+# SVM – Support vector Machine
+
 SVM can be used for both regression and classification model. It finds the hyperplane in the n-dimensional plane. To read more about svm refer this.
 
 from sklearn import svm
@@ -127,7 +129,9 @@ print(mean_absolute_percentage_error(Y_valid, Y_pred))
 Output : 
 
 0.18705129
-Random Forest Regression
+
+# Random Forest Regression
+
 Random Forest is an ensemble technique that uses multiple of decision trees and can be used for both regression and classification tasks. To read more about random forests refer this.
 
 from sklearn.ensemble import RandomForestRegressor
@@ -140,7 +144,9 @@ mean_absolute_percentage_error(Y_valid, Y_pred)
 Output : 
 
 0.1929469
-Linear Regression
+
+# Linear Regression
+
 Linear Regression predicts the final output-dependent value based on the given independent features. Like, here we have to predict SalePrice depending on features like MSSubClass, YearBuilt, BldgType, Exterior1st etc. To read more about Linear Regression refer this.
 
 from sklearn.linear_model import LinearRegression
@@ -153,11 +159,13 @@ print(mean_absolute_percentage_error(Y_valid, Y_pred))
 Output : 
 
 0.187416838
-CatBoost Classifier
+
+
+# CatBoost Classifier
 CatBoost is a machine learning algorithm implemented by Yandex and is open-source. It is simple to interface with deep learning frameworks such as Apple’s Core ML and Google’s TensorFlow. Performance, ease-of-use, and robustness are the main advantages of the CatBoost library. To read more about CatBoost refer this.
 
 
-# This code is contributed by @amartajisce
+ 
 from catboost import CatBoostRegressor
 cb_model = CatBoostRegressor()
 cb_model.fit(X_train, y_train)
@@ -167,7 +175,7 @@ cb_r2_score=r2_score(Y_valid, preds)
 cb_r2_score
 0.893643437976127
 
-# Evaluate models using mean_absolute_percentage_error
+ 
 
 # Conclusion
 
